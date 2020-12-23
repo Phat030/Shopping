@@ -1,0 +1,128 @@
+﻿@model IEnumerable<HomeShopping.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+    <div class="container-fluid">       
+        <div class="main">
+            <div class="content">
+                <h3>Sản phẩm</h3>
+                <div class="section group">
+                    @foreach (var item in Model)
+                    {
+                        <div class="grid_1_of_4 images_1_of_4" style="width:195px;margin-left:0px">
+                            <a asp-action="Details" asp-route-id="@item.ProductId"><img src="images/@item.ProductImage" alt="" /></a>
+                            <h2 style="font-size:18px;padding-top:5px">@item.ProductName</h2>
+                            <h2 style="font-size:18px;">@item.Descriptions</h2>
+                            <div class="price-details">
+                                <div class="price-number">
+                                    <p style="padding-left:47px"><span class="rupees">@item.ProductPrice.ToString("C")</span></p>
+                                </div>
+
+
+                                <div class="add-cart">
+                                    <h4 style="padding-right:40px">
+                                        <a asp-controller="Cart" asp-action="Buy" asp-route-id="@item.ProductId">Buy Now</a>
+                                    </h4>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+                <div>
+                    <ul class="pagination">
+                        @for (int i = 0; i <= ViewBag.Dem; i++)
+                        {
+                            <li>
+
+                                <a href="@Url.Action("Index","Product",new { page =i})">@(i+1)</a>
+                               
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+@*<h2>Claim details</h2>
+    <ul>
+        @foreach (var claim in User.Claims)
+        {
+            <li><strong>@claim.Type</strong>: @claim.Value</li>
+        }
+    </ul>*@
+
+
+
+
+
+
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductQuantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreateDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descriptions)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductQuantity)
+                    </td>
+                    <td>
+                        <img src="~/images/@item.ProductImage" height="100" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreateDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descriptions)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.CategoryID)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@

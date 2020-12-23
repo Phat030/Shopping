@@ -1,0 +1,110 @@
+﻿@model IEnumerable<HomeShopping.Models.News>
+
+@{
+    ViewData["Title"] = "ManageNews";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Quản lí tin tức</h1>
+
+<p>
+    <a asp-action="CreateNews" class="btn btn-primary">Create New</a>
+</p>
+<table class="table" style="margin-left:10px">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NewsID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NewsName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuickView)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NewsDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NewsTitle1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NewsImage1)
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.NewsImage2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewsImage3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewsImage4)
+        </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Paragraph1)
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Paragraph2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Paragraph3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Paragraph4)
+        </th>*@
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewsID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewsName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuickView)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewsDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewsTitle1)
+            </td>
+            <td>
+                <img src="~/images/@item.NewsImage1" height="100" />
+            </td>
+            @*<td>
+            <img src="images/@item.NewsImage2" height="100" />
+        </td>
+        <td>
+            <img src="images/@item.NewsImage3" height="100" />
+        </td>
+        <td>
+            <img src="images/@item.NewsImage4" height="100" />
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Paragraph1)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.Paragraph2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paragraph3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paragraph4)
+        </td>*@
+
+            <td>
+                <a asp-action="EditNews" asp-route-id="@item.NewsID" class="btn btn-primary">Edit</a>
+
+                <a style="margin-top:10px" asp-action="DeleteNews" asp-route-id="@item.NewsID" class="btn btn-primary">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

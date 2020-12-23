@@ -1,0 +1,290 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model HomeShopping.Models.ProductModel
+<style>
+    .btn {
+        border-radius: 1.5rem;
+        height: 50px;
+        width: 200px;
+        color: white;
+        padding-left: 10px
+    }
+        a {
+        padding-top:25px;
+        font-weight:500;
+        font-size:16px;
+        }
+        a:hover {
+        background-color: darkred;
+        }
+    input[type=submit] {
+        border-radius: 1.5rem;
+        height: 50px;
+        width: 200px;
+        color: white;
+        padding-left: 10px
+    }
+
+        input[type=submit]:hover {
+            background-color: darkred;
+        }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    img {
+        vertical-align: middle;
+    }
+
+    /* Position the image container (needed to position the left and right arrows) */
+    .container {
+        position: relative;
+    }
+
+    /* Hide the images by default */
+    .mySlides {
+        display: none;
+    }
+
+    /* Add a pointer when hovering over the thumbnail images */
+    .cursor {
+        cursor: pointer;
+    }
+
+    /* Next & previous buttons */
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 40%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+
+    /* Container for image text */
+    .caption-container {
+        text-align: center;
+        background-color: #222;
+        padding: 2px 16px;
+        color: white;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Six columns side by side */
+    .column {
+        float: left;
+        width: 16.66%;
+    }
+
+    /* Add a transparency effect for thumnbail images */
+    .demo {
+        opacity: 0.6;
+    }
+
+        .active,
+        .demo:hover {
+            opacity: 1;
+        }
+</style>
+<h2 style="padding-top:30px;color:darkred">THÔNG TIN SẢN PHẨM</h2>
+<div class="row">
+    <div class="col-sm-5">
+        <img src="~/images/@Model.ProductImage" />
+    </div>
+    <div class="col-sm-7" style="padding-top:5px">
+        <h4>Tên sản phẩm: @Model.ProductName</h4>
+        <h4>Giá thành: @Model.ProductPrice</h4>
+        <h4>Description:@Model.ManHinh</h4>
+        <div class="row">
+            <a class="btn btn-outline-danger"  asp-controller="Cart" asp-action="Buy" asp-route-id="@Model.ProductID" style="background-color:#09f;padding-top:10px" >Mua Ngay</a>
+            @*<input type="submit" id="buy" name="buy" value="Mua Ngay" style="background-color:#f89009" />*@
+        </div>
+    </div>
+</div>
+<div class="container" style="padding-top:20px">
+    <div class="mySlides">
+        <div class="numbertext">1 / 6</div>
+        <img src="~/images/bannerHome.jpg" style="width:900px" height="300">
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">2 / 6</div>
+        <img src="~/images/bannerHW.png" style="width:900px" height="300">
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">3 / 6</div>
+        <img src="~/images/bannerSS.jpg" style="width:900px" height="300">
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">4 / 6</div>
+        <img src="~/images/banner-web01-01.png" style="width:900px" height="300">
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">5 / 6</div>
+        <img src="~/images/Banner_2.jpg" style="width:900px" height="300">
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">6 / 6</div>
+        <img src="~/images/huawei-banner.jpg" style="width:900px" height="300">
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)" style="color:white">❮</a>
+    <a class="next" onclick="plusSlides(1)" style="margin-right:230px;color:white">❯</a>
+
+
+
+    <div class="row" style="margin-left:0px;margin-right:210px">
+        <div class="column">
+            <img class="demo cursor" src="~/images/bannerHome.jpg" style="width:100%" height="100" onclick="currentSlide(1)" alt="The Woods">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="~/images/bannerHW.png" style="width:100%" height="100" onclick="currentSlide(2)" alt="Cinque Terre">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="~/images/bannerSS.jpg" style="width:100%" height="100" onclick="currentSlide(3)" alt="Mountains and fjords">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="~/images/banner-web01-01.png" style="width:100%" height="100" onclick="currentSlide(4)" alt="Northern Lights">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="~/images/Banner_2.jpg" style="width:100%" height="100" onclick="currentSlide(5)" alt="Nature and sunrise">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="~/images/huawei-banner.jpg" style="width:100%" height="100" onclick="currentSlide(6)" alt="Snowy Mountains">
+        </div>
+    </div>
+</div>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+</script>
+
+
+<div style="padding-top:10px">
+    <p>
+        Huawei Y9 Prime (2019) là phiên bản kế nhiệm của chiếc Y9 Prime (2018) đã ra mắt năm ngoái và cũng là chiếc điện thoại đầu tiên của Huawei được trang bị công nghệ camera trượt và màn hình tràn viền ra bốn cạnh.
+    </p>
+    <h3 style="font-weight:bold">
+        Thiết kế tràn viền đúng nghĩa
+    </h3>
+    <p>
+        Gần đây thì xu thế làm smartphone "tai thỏ" hay "giọt nước" đã không còn được yêu thích như trước mà thay vào đó là màn hình tràn viền đúng nghĩa.
+    </p>
+    <img src="~/images/huawei1.jpg" />\
+    <p>
+        Ấn tượng đầu tiên về thiết kế của Huawei Y9 Prime (2019) đó là việc thiết bị này được trang bị màn hình không bị khuyết bất cứ một phần nhỏ nào.
+        Bạn sẽ có một trải nghiệm hoàn toàn mới, không gian giờ đây như mở rộng ra về bốn cạnh.
+    </p>
+    <img src="~/images/huawei2.jpg" />
+    <p>
+        Màn hình của Huawei Y9 Prime (2019) có kích thước 6.59 inch, độ phân giải Full HD+, tấm nền LCD IPS.
+        <br />
+        Hình ảnh hiển thị trên tấm nền ở mức khá, màu sắc hiển thị ở tone màu trung tính, khá chính xác với màu sắc thực tế.
+        <br />
+        Nhìn chung với màn hình lớn việc giải trí trên Y9 Prime (2019) rất tốt, đặc biệt là những tác vụ giải trí và chơi game.
+    </p>
+    <h3 style="font-weight:bold">
+        Camera "thoắt ẩn thoắt hiện"
+    </h3>
+    <img src="~/images/huawei3.jpg" />
+    <p>
+        Điểm nhấn trên Huawei Y9 Prime (2019) chính là cụm camera trước đó là khả năng “thò thụt” giúp chiếc máy trông cực ngầu và hiện đại
+    </p>
+    <img src="~/images/huawei4.jpg" />
+    <p>
+        Ống kính được trang bị trên cụm camera trước là 16 MP cho phép người dùng ghi lại những khoảnh khắc rất chân thật.
+    </p>
+    <img src="~/images/huawei5.jpg" />
+    <p>
+        Camera chính của máy cũng gây ấn tượng với 3 camera có độ phân giải lần lượt là: 16 MP, 8 MP và 2 MP cho khả năng xoá phông tốt, thuật toán AI nhận diện bối cảnh và chủ thể nhanh, cho độ chính xác cao.
+    </p>
+    <img src="~/images/huawei6.jpg" />
+    <p>
+        Camera góc rộng là điểm cộng trên chiếc Huawei Y9 Prime (2019), khi thực hiện chụp ảnh góc rộng, ảnh cho ra những hiệu ứng bo cong trông rất ấn tượng.
+    </p>
+    <h3 style="font-weight:bold">
+        Dung lượng pin thoải mái cả ngày
+    </h3>
+    <p>
+        Huawei Y9 Prime (2019) được nhà sản xuất ưu ái trang bị viên pin dung lượng cao với 4000 mAh giúp bạn thoải mái dùng cả ngày mà không cần sạc pin.
+    </p>
+    <img src="~/images/huawei7.jpg" />
+    <p>
+        Bên cạnh đó máy cũng sở hữu tính năng tiết kiệm pin giúp máy có thể hoạt động lâu hơn trong những trường hợp khẩn cấp.
+    </p>
+    <img src="~/images/huawei8.jpg" />
+    <p>
+        2 SIM 2 sóng cùng kết nối 4G tốc độ cao tất nhiên sẽ là những tính năng không thể thiếu giúp bạn thoải mái Facebook mọi lúc mọi nơi.
+    </p>
+    <h3 style="font-weight:bold">
+        Video giới thiệu sản phẩm
+    </h3>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/MQ9M8SKGeOc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>

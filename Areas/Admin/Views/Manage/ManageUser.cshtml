@@ -1,0 +1,95 @@
+﻿@using HomeShopping.Models;
+
+@model IEnumerable<HomeShopping.Models.Domain.User>
+@{
+    ViewData["Title"] = "ManageUser";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+}
+<input type="text" name="q" class="form-control" placeholder="Search..." id="myInput" onkeyup="myFunction()">
+<span class="input-group-btn">
+    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+        <i class="fa fa-search"></i>
+    </button>
+</span>
+<div class="row" style="margin-left:10px">
+
+    <div class="col-sm-12">
+
+        <h1>Quản lí user</h1>
+
+        <hr />
+
+        <table class="table table-borderer" id="myTable">
+
+            <thead>
+
+                <tr>
+                    <th>UserName</th>
+                    <th>Họ tên</th>
+
+                    <th>Email</th>
+
+
+                    <th></th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+
+                {
+
+                    <tr>
+
+                        <td>@item.UserName</td>
+                        <td>@item.FirstName @item.LastName</td>
+
+                        <td>@item.Email</td>
+                        <!--<td>
+
+                            @Html.ActionLink("Sửa thông tin", "Edit", new { Id = item.Id }, null) |-->
+
+                            @*@Html.ActionLink("Sửa quyền", "EditRole", new { Id = item.Id }, null) |*@
+
+                            <!--@Html.ActionLink("Xóa", "Delete", new { Id = item.Id }, null)
+
+                        </td>-->
+
+                    </tr>
+
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+<script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>

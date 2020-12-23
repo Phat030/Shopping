@@ -1,0 +1,165 @@
+﻿@using HomeShopping.Models;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+
+    input[type=submit] {
+        border-radius: 1.875rem;
+        padding-top: 10px;
+        background-color: darkred;
+        color: white;
+        height: 50px;
+        width: 100px;
+    }
+
+        input[type=submit]:hover {
+            background-color: dodgerblue;
+        }
+</style>
+<h2>CART</h2>
+@if (ViewBag.cart != null)
+{
+    <form method="post" action="/Cart/XacNhan">
+        <table class="table-bordered table">
+            <tr>
+                <th>Id</th>
+                <th>Tên sản phẩm</th>
+                <th>Hình ảnh</th>
+                <th>Giá </th>
+                <th>Số lượng</th>
+                <th>Tổng cộng</th>
+                <th>Option</th>
+            </tr>
+            @foreach (var item in ViewBag.cart)
+            {
+                <tr>
+                    <td>@item.Product.ProductId</td>
+                    <td>@item.Product.ProductName</td>
+                    <td>
+                        <img src="~/images/@item.Product.ProductImage" width="60" height="60" />
+                    </td>
+                    <td>@item.Product.ProductPrice</td>
+                    <td>
+                        <div class="col-lg-2">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button type="button" class="quantity-left-minus btn btn-light btn-number" data-type="minus" style="height:30px" data-field="">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                    </button>
+                                </span>
+                                <input type="text" id="quantity" name="quantity" value="@item.Quantity" style="width:50px;height:30px" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="quantity-right-plus btn btn-light btn-number" style="margin-left:10px; height:30px" data-type="plus" data-field="">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        @(item.Product.ProductPrice * item.Quantity)
+                    </td>
+                    <td>
+                        <a asp-controller="Cart" asp-action="Remove"
+                           asp-route-id="@item.Product.ProductId">Remove</a>
+                    </td>
+                </tr>
+
+            }
+            <tr>
+                <td align="right" colspan="6">Tổng cộng</td>
+                <td>
+                    @ViewBag.total
+                </td>
+            </tr>
+
+        </table>
+    </form>
+    <br>
+    <form method="post" action="/Cart/Pay">
+        <input style="float:right" type="submit" class="btn btn-primary" value="ORDER" />
+    </form>
+}
+
+<script src="https://www.paypal.com/sdk/js?client-id=Ad5hkZh6TXmebyWKtqUeCykZLkiT0QgXfk7Nmc6I3d0angQa-w8BTUmeYrkLLRYj0yQ07flWcM8NhDvy">
+    // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+</script>
+<div id="paypal-button-container" style="margin-top:5px;width:50px"></div>
+
+@foreach (var item in ViewBag.cart)
+{
+    <script>
+        paypal.Buttons({
+            createOrder: function (data, actions) {
+                // This function sets up the details of the transaction, including the amount and line item details.
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: @ViewBag.total
+                        },
+                        @*items: [{
+                            name: '@item.Product.ProductName',
+                            unit_amount: { value: '2.99', currency_code: 'EUR' },
+                            quantity: '@item.Quantity',
+                            sku: 'haf001'
+                        }]*@
+                        
+                    }]
+                });
+            },
+            onApprove: function (data, actions) {
+                // This function captures the funds from the transaction.
+                return actions.order.capture().then(function (details) {
+                    // This function shows a transaction success message to your buyer.
+                    alert('Transaction completed by ' + details.payer.name.given_name);              
+                });
+            }
+        }).render('#paypal-button-container');
+        // This function displays Smart Payment Buttons on your web page.
+    </script>
+}
+<a asp-controller="Home" asp-action="index" style="font-size:18px;padding-bottom:20px;color: darkred;">
+    Continue Shopping
+</a>
+<br />
+
+
+@*javascript*@
+<script>
+    $(document).ready(function () {
+
+        var quantitiy = 0;
+        $('.quantity-right-plus').click(function (e) {
+
+            // Stop acting like a button
+            e.preventDefault();
+            // Get the field name
+            var quantity = parseInt($('#quantity').val());
+
+            // If is not undefined
+
+            $('#quantity').val(quantity + 1);
+
+
+            // Increment
+
+        });
+
+        $('.quantity-left-minus').click(function (e) {
+            // Stop acting like a button
+            e.preventDefault();
+            // Get the field name
+            var quantity = parseInt($('#quantity').val());
+
+            // If is not undefined
+
+            // Increment
+            if (quantity > 0) {
+                $('#quantity').val(quantity - 1);
+            }
+        });
+
+    });
+</script>

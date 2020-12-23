@@ -1,0 +1,82 @@
+﻿@model HomeShopping.Models.OrderDetail
+
+@{
+    ViewData["Title"] = "EditOrder";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>EditOrder</h1>
+
+
+<hr />
+<div class="row" style="margin-left:20px">
+    <div class="col-md-10">
+        <form asp-action="EditOrder">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <label asp-for="OrderDetailID" class="control-label"></label>
+                    <input asp-for="OrderDetailID" class="form-control" />
+                    <span asp-validation-for="OrderDetailID" class="text-danger"></span>
+                </div>
+                <div class="col-sm-4">
+                    <label asp-for="OrderID" class="control-label"></label>
+                    <input asp-for="OrderID" class="form-control" />
+                    <span asp-validation-for="OrderID" class="text-danger"></span>
+                </div>
+                <div class="col-sm-4">
+                    <label asp-for="ProductId" class="control-label"></label>
+                    <input asp-for="ProductId" class="form-control" />
+                    <span asp-validation-for="ProductId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <label asp-for="Quantity" class="control-label"></label>
+                    <input asp-for="Quantity" class="form-control" />
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </div>
+                <div class="col-sm-4">
+                    <label asp-for="HoTen" class="control-label"></label>
+                    <input asp-for="HoTen" class="form-control" />
+                    <span asp-validation-for="HoTen" class="text-danger"></span>
+                </div>
+                <div class="col-sm-4">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <label asp-for="SDT" class="control-label"></label>
+                    <input asp-for="SDT" class="form-control" />
+                    <span asp-validation-for="SDT" class="text-danger"></span>
+                </div>
+                <div class="col-sm-4">
+                    <label asp-for="DiaChi" class="control-label"></label>
+                    <input asp-for="DiaChi" class="form-control" />
+                    <span asp-validation-for="DiaChi" class="text-danger"></span>
+                </div>
+                <div class="col-sm-4">
+                    <label asp-for="YeuCau" class="control-label"></label>
+                    <input asp-for="YeuCau" class="form-control" />
+                    <span asp-validation-for="YeuCau" class="text-danger"></span>
+                </div>
+                <div class="col-sm-4">
+                    <label asp-for="Status" class="control-label"></label>
+                    <input asp-for="Status" class="form-control" />
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="margin-left:20px">
+    <a asp-action="ManageOrder" class="btn btn-danger">Back to List</a>
+</div>
+

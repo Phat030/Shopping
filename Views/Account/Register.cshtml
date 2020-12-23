@@ -1,0 +1,220 @@
+﻿@model HomeShopping.Models.Domain.UserRegistrationModel
+@{
+
+    Layout = null;
+}
+<style>
+    .note {
+        text-align: center;
+        height: 80px;
+        background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+        color: #fff;
+        font-weight: bold;
+        line-height: 80px;
+    }
+
+    .form-content {
+        padding: 5%;
+        border: 1px solid #ced4da;
+        margin-bottom: 2%;
+    }
+
+    .form-control {
+        border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+        border: none;
+        border-radius: 1.5rem;
+        padding: 1%;
+        width: 20%;
+        cursor: pointer;
+        background: #0062cc;
+        color: #fff;
+    }
+</style>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container register-form">
+    <div class="form">
+        <div class="note">
+            <p>REGISTER</p>
+        </div>
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="textdanger">
+            </div>
+            <div class="form-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input asp-for="FirstName" type="text" class="form-control" placeholder="Your Name *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="LastName" type="text" class="form-control" placeholder="Your Name *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Email" type="text" class="form-control" placeholder="Your Email *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Your Password *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password *" value="" />
+                        </div>
+                    </div>                    
+                </div>
+                <input type="submit" class="btnSubmit" value="Sign Up" />
+                <a asp-action="Login" asp-controller="Account" class="btn btn-success" style="margin-left:20px;width:123px;border-radius:1.5rem;background: #0062cc;">Login</a>
+            </div>
+        </form>
+        
+    </div>
+</div>
+@*<div style="border-radius:10px;width:60%;border:solid;margin-left:100px;padding-top:10px;background-image:url('../../images/blackbgr.jpg');color:white">
+        <h1 style="text-align:center">Register</h1>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Register">
+                    <div asp-validation-summary="ModelOnly" class="textdanger">
+                    </div>
+                    <div class="form-group" style="margin-left:20px">
+                        <label asp-for="FirstName" class="controllabel">
+                        </label>
+                        <input style="width:450px" asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="textdanger">
+                        </span>
+                    </div>
+                    <div class="form-group" style="margin-left:20px">
+                        <label asp-for="LastName" class="controllabel">
+                        </label>
+                        <input style="width:450px" asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="textdanger">
+                        </span>
+                    </div>
+                    <div class="form-group" style="margin-left:20px">
+                        <label asp-for="Email" class="controllabel">
+                        </label>
+                        <input style="width:450px" asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="textdanger">
+                        </span>
+                    </div>
+                    <div class="form-group" style="margin-left:20px">
+                        <label asp-for="Password" class="controllabel">
+                        </label>
+                        <input style="width:450px" asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="textdanger">
+                        </span>
+                    </div>
+                    <div class="form-group" style="margin-left:20px">
+                        <label asp-for="ConfirmPassword" class="controllabel"></label>
+                        <input style="width:450px" asp-for="ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="margin-left:200px">
+                        <input type="submit" style="width:100px" value="Sign Up" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>*@
+
+@section Scripts {
+    @{await
+              Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+@*<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login V12</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    ===============================================================================================
+    <link rel="icon" type="image/png" href="~/images/icons/favicon.ico" />
+    ===============================================================================================
+    <link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+    ===============================================================================================
+    <link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    ===============================================================================================
+    <link rel="stylesheet" type="text/css" href="~/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    ===============================================================================================
+    <link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
+    ===============================================================================================
+    <link rel="stylesheet" type="text/css" href="~/vendor/css-hamburgers/hamburgers.min.css">
+    ===============================================================================================
+    <link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
+    ===============================================================================================
+    <link rel="stylesheet" type="text/css" href="~/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+    ===============================================================================================
+</head>
+<body>
+
+    <div class="limiter">
+
+        <div class="container-login100" style="background-image: url('../images/avatar.jpg');">
+            <div class="wrap-login100 p-t-50 p-b-0">
+                <form class="login100-form validate-form" asp-action="Register">
+                    <div asp-validation-summary="ModelOnly" class="textdanger">
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-10" data-validate="Email is required">
+                        <input asp-for="FirstName" class="input100" type="text" name="firstname" id="firstname" placeholder="FirstName">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-user"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-10" data-validate="Email is required">
+                        <input asp-for="LastName" class="input100" type="text" name="lastname" id="lastname" placeholder="LsatName">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-user"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-10" data-validate="Email is required">
+                        <input asp-for="Email" class="input100" type="text" name="email" id="email" placeholder="Email">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-user"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-10" data-validate="Password is required">
+                        <input asp-for="Password" class="input100" type="password" name="password" id="password" placeholder="Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-10" data-validate="Password is required">
+                        <input asp-for="ConfirmPassword" class="input100" type="password" name="confirmpw" id="confirmpw" placeholder="Confirm Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock"></i>
+                        </span>
+                    </div>
+                    <div class="container-login100-form-btn p-t-10">
+                        <input type="submit" value="Sign Up" class="login100-form-btn">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>*@
+
+    <!--===============================================================================================-->
+    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/js/main.js"></script>
+@*</body>
+</html>*@
+

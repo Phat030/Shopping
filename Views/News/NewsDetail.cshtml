@@ -1,0 +1,100 @@
+﻿@model HomeShopping.Models.News
+@{
+    ViewData["Title"] = "NewsDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    p {
+        font-size: 18px;
+        padding-top: 10px;
+    }
+
+    h2 {
+        font-weight: 600;
+        font-size: 35px;
+    }
+
+    h3 {
+        font-weight: bolder;
+        font-size: 30px;
+        padding-top: 20px;
+    }
+
+    a {
+        font-size: 18px;
+        /*color:darkred;*/
+    }
+
+    img {
+        margin-top: 10px;
+    }
+</style>
+<div class="container" style="width:90%">
+  
+   
+        <h2>@Model.NewsName</h2>
+        <img src="~/images/@Model.NewsImage1" />
+        <p>
+            @Model.QuickView
+        </p>
+        <h3>@Model.NewsTitle1</h3>
+        <img src="~/images/@Model.NewsImage2" />
+        <p>
+            @Model.Paragraph1
+        </p>
+        <h3>@Model.NewsTitle2</h3>
+
+        <p>
+            @Model.Paragraph2
+        </p>
+        <h3>@Model.NewsTitle3</h3>
+        <img src="~/images/@Model.NewsImage3" />
+        <p>
+            @Model.Paragraph3
+
+        </p>
+        <h3>@Model.NewsTitle4</h3>
+        <img src="~/images/@Model.NewsImage4" />
+        <p>
+            @Model.Paragraph4
+        </p>
+       
+        <h3>Bài viết liên quan</h3>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="col-sm-4">
+                    <img src="~/images/redmi9.jpg" style="height:100px" />
+                </div>
+                <div class="col-sm-8">
+                    <a href="#">Redmi 9 và con đường trở lại của ông trùm giá rẻ</a>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="col-sm-4">
+                    <img src="~/images/vsmartjoy3.jpg" style="height:100px" />
+                </div>
+                <div class="col-sm-8">
+                    <a href="#">Đánh giá chi tiết Vsmart Joy 3: Hiệu năng như trâu, pin lâu mới hết</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="col-sm-4">
+                    <img src="~/images/vsmartactive.jpg" style="height:100px" />
+                </div>
+                <div class="col-sm-8">
+                    <a href="#">Thực hư câu chuyện “Tại Việt Nam, cứ trong 6 chiếc smartphone bán ra thì có một chiếc Vsmart”</a>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="col-sm-4">
+                    <img src="~/images/android.jpg" style="height:100px" />
+                </div>
+                <div class="col-sm-8">
+                    <a href="#">Do ảnh hưởng bởi dịch COVID-19, HMD Global lùi thời điểm cập nhật Android 10 cho một số smartphone</a>
+                </div>
+            </div>
+        </div>
+
+</div>

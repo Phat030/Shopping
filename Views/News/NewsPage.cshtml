@@ -1,0 +1,44 @@
+﻿@model IEnumerable<HomeShopping.Models.News>
+
+@{
+    ViewData["Title"] = "NewsPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="categories">
+    <h3>Tin tức mới nhất</h3>
+</div>
+<div class="main">
+    @foreach (var item in Model)
+    {
+        <div class="content">
+            <div class="image group">
+                <div class="grid images_3_of_1" style="padding-top:20px">
+                    <img src="~/images/@item.NewsImage1" alt="" />
+                </div>
+                <div class="grid news_desc">
+                    <a asp-action="NewsDetail" asp-controller="News" asp-route-id="@item.NewsID">@item.NewsName</a>
+                    <h4>Posted on @item.NewsDate </h4>
+                    <p>
+                        @item.QuickView
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    }
+    <div>
+        <ul class="pagination">
+            @for (int i = 0; i <= ViewBag.Dem; i++)
+            {
+                <li>
+
+                    <a href="@Url.Action("NewsPage","News",new { page =i})">@(i+1)</a>
+                    @*<a asp-action="NewsPage" asp-controller="News" >@(i+1)</a>*@
+                    @*@Html.ActionLink("@(i+1)","NewsPage","News", new { page = i })*@
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+

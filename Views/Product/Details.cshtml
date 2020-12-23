@@ -1,0 +1,169 @@
+﻿@model HomeShopping.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<style>
+    p {
+        font-size: 16px;
+    }
+
+    .btn {
+        border-radius: 1.5rem;
+        height: 50px;
+        width: 200px;
+        color: white;
+        padding-left: 10px
+    }
+
+
+
+      
+
+    input[type=submit] {
+        border-radius: 1.5rem;
+        height: 50px;
+        width: 200px;
+        color: white;
+        padding-left: 10px
+    }
+
+        input[type=submit]:hover {
+            background-color: darkred;
+        }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    img {
+        vertical-align: middle;
+    }
+
+    /* Position the image container (needed to position the left and right arrows) */
+    .container {
+        position: relative;
+    }
+
+    /* Hide the images by default */
+    .mySlides {
+        display: none;
+    }
+
+    /* Add a pointer when hovering over the thumbnail images */
+    .cursor {
+        cursor: pointer;
+    }
+
+    /* Next & previous buttons */
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 40%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+
+    /* Container for image text */
+    .caption-container {
+        text-align: center;
+        background-color: #222;
+        padding: 2px 16px;
+        color: white;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Six columns side by side */
+    .column {
+        float: left;
+        width: 16.66%;
+    }
+
+    /* Add a transparency effect for thumnbail images */
+    .demo {
+        opacity: 0.6;
+    }
+
+        .active,
+        .demo:hover {
+            opacity: 1;
+        }
+
+    
+</style>
+<h2 style="padding-top:30px;color:darkred">THÔNG TIN SẢN PHẨM</h2>
+<div class="row">
+    <div class="col-sm-5">
+        <img src="~/images/@Model.ProductImage" />
+    </div>
+    <div class="col-sm-7" style="padding-top:5px">
+        <h3 style="font-weight:bolder">Tên sản phẩm: @Model.ProductName</h3>
+        <h3 style="font-weight:bolder">Giá thành: @Model.ProductPrice.ToString("C")</h3>
+        <div class="row">
+            <a class="btn btn-outline-danger" asp-controller="Cart" asp-action="Buy" asp-route-id="@Model.ProductId" style="background-color:#09f;padding-top:10px;font-size:18px;margin-left:20px">Mua Ngay</a>
+            @*<input type="submit" id="buy" name="buy" value="Mua Ngay" style="background-color:#f89009" />*@
+        </div>
+    </div>
+</div>
+<h3 style="font-weight:bolder">Thông số kĩ thuật</h3>
+<hr />
+<div class="row">
+    <div class="col-sm-6">
+        <h4>Màn hình</h4><hr />
+        <h4>CPU</h4><hr />
+        <h4>RAM</h4><hr />
+        <h4>Bộ nhớ trong</h4><hr />
+        <h4>Hệ điều hành</h4><hr />
+        <h4>Dung lượng PIN</h4><hr />
+    </div>
+    <div class="col-sm-6" style="color:darkred;">
+        <h4>@Model.ManHinh</h4><hr />
+        <h4>@Model.CPU</h4><hr />
+        <h4>@Model.RAM</h4><hr />
+        <h4>@Model.BoNhoTrong</h4><hr />
+        <h4>@Model.HeDieuHanh</h4><hr />
+        <h4>@Model.DungLuongPin</h4><hr />
+
+    </div>
+</div>
+
+   
+

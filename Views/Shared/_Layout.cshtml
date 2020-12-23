@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="RCPFCI8vMp3G8g9Wo7df1F9qy0rinkeOibGG3vBvBK0" />
+    <title>@ViewData["Title"] - PB's Store</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/css/slider.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/css/easy-responsive-tabs.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/css/global.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        span {
+            padding-right: 5px;
+        }
+    </style>
+</head>
+<body>
+   
+        <header>
+            <div class="container">
+                <div class="header">
+                    <div class="headertop_desc">                        
+                        <div class="account_desc">
+                            <ul style="font-size:15px">
+                                <li><a asp-controller="Cart" asp-action="Index"><span class="glyphicon glyphicon-shopping-cart"></span>CART</a></li>
+                                @*<partial name="_LoginPartial" />*@
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                        @*@Html.RenderPartialAsync("_LoginPartial")*@
+
+                    </div>
+                    <div>
+
+                    </div>
+                    <div class="header_top">
+                        <div class="logo">
+                            <a asp-controller="Home" asp-action="Index"><img src="~/images/store_logo.png" alt="" /></a>
+                        </div>
+                        @*<ul style="float:right">
+                            <li><a asp-controller="Cart" asp-action="Index"><span class="glyphicon glyphicon-shopping-cart"></span>Giỏ hàng</a></li>
+                        </ul>*@
+                        <ul>
+                            <li><partial name="_LoginPartial" /></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+
+
+                    <form method="post" action="/Contact/Send">
+                        <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center" style="background-color:blueviolet;color:white">
+                                        <h4 class="modal-title w-100 font-weight-bold">YOUR FEEDBACK</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body mx-3">
+                                        <div class="md-form mb-5">
+                                            <i class="fas fa-user prefix grey-text"></i>
+                                            <label data-error="wrong" data-success="right" for="hoten">FULL NAME</label>
+                                            <input type="text" id="hoten" name="hoten" class="form-control validate">
+
+                                        </div>
+
+                                        <div class="md-form mb-5">
+                                            <i class="fas fa-envelope prefix grey-text"></i>
+                                            <label data-error="wrong" data-success="right" for="email">EMAIL</label>
+                                            <input type="email" id="email" name="email" class="form-control validate">
+
+                                        </div>
+
+                                        <div class="md-form mb-5">
+                                            <i class="fas fa-tag prefix grey-text"></i>
+                                            <label data-error="wrong" data-success="right" for="phone">PHONE</label>
+                                            <input type="text" id="phone" name="phone" class="form-control validate">
+
+                                        </div>
+
+                                        <div class="md-form">
+                                            <i class="fas fa-pencil prefix grey-text"></i>
+                                            <label data-error="wrong" data-success="right" for="message">FEEDBACK</label>
+                                            <textarea type="text" id="message" name="message" class="md-textarea form-control" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-center" >
+                                        <input type="submit" value="Send" style="background-color:blueviolet;color:white;border-radius:4px;width:100px;height:40px"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="header_bottom">
+                        <div class="menu">
+                            <ul>
+                                <li><a asp-controller="Home" asp-action="Index"><span class="glyphicon glyphicon-home"></span>HOME</a></li>
+                                @*<li><a href="about.html"><span class="glyphicon glyphicon-question-sign"></span>Hỏi đáp</a></li>*@
+                                <li><a asp-controller="News" asp-action="NewsPage" asp-area=""><span class="glyphicon glyphicon-list-alt"></span>NEWS</a></li>
+                                <li><a href="" data-toggle="modal" data-target="#modalContactForm"><span class="glyphicon glyphicon-earphone"></span>FEEDBACK</a></li>s
+                                <li><a asp-controller="FindOrder" asp-action="Index" asp-area=""><span class="glyphicon glyphicon-envelope"></span>SEARCH FOR ORDERS</a></li>
+                                <li><a asp-controller="Manage" asp-action="Index" asp-area="Admin"><span class="glyphicon glyphicon-list-alt"></span>MANAGE</a></li>
+                                <div class="clear"></div>
+                            </ul>
+                        </div>
+                        <div class="search_box">
+                            <form method="post" action="/Product/Search">
+                                <input id="search" type="text" name="search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                                <input type="submit" value="">
+                            </form>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="header_slide">
+                        <div class="header_bottom_left">
+                            <div class="categories">
+                                <ul>
+                                    <h3 style="background:#0a5ef6">CATEGORIES</h3>
+
+                                    <li><a asp-controller="Product" asp-action="Iphone" asp-area="">Iphone</a></li>
+                                    <li><a asp-controller="Product" asp-action="Samsung">Samsung</a></li>
+                                    <li><a asp-controller="Product" asp-action="Sony">Sony</a></li>
+                                    <li><a asp-controller="Product" asp-action="Oppo">Oppo</a></li>
+                                    <li><a asp-controller="Product" asp-action="Huawei">Huawei</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="categories">
+                                <ul>
+                                    <h3 style="background:#0a5ef6">PRICES</h3>
+                                    <li><a asp-controller="Product" asp-action="TimTheoGia1" asp-area="">Below 200$</a></li>
+                                    <li><a asp-controller="Product" asp-action="TimTheoGia2" asp-area="">200$-500$</a></li>
+                                    <li><a asp-controller="Product" asp-action="TimTheoGia3" asp-area="">500$-1000$</a></li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                        <div class="header_bottom_right">
+                            @RenderBody()
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+
+                </div>
+            </div>
+        </header>
+        @*<div class="content">
+                <main role="main" class="pb-3">
+
+                </main>
+            </div>
+        *@
+        <hr />
+        <footer>
+            <div class="row" style="flex-wrap:nowrap;background-color:black;color:white;font-size:18px">
+                <div class="col-sm-4" style="margin-left:30px;margin-bottom:5px;">
+                    <p><span class="glyphicon glyphicon-map-marker" style="padding-top:10px"></span>ADDRESS: 155 Sư Vạn Hạnh, Phường 12, Quận 10, HCM </p>
+                    <p><span class="glyphicon glyphicon-envelope"></span>Email:pbstore@gmail.com</p>
+                    <p><span class="glyphicon glyphicon-earphone"></span>Hotline: 0001111111</p>
+                    <p><span class="glyphicon glyphicon-globe"></span>Website: pbstore.com</p>
+                </div>
+                <div class="col-sm-4" style="padding-left:50px">
+                    <h3 style="margin-top:5px;margin-bottom:5px">Our Services</h3>
+                    <ul>
+                        <li style="margin-top:10px"><a asp-action="Index" asp-controller="Home" style="color:white">HOME</a></li>
+                        <li style="margin-top:10px"><a asp-action="Index" asp-controller="Contact" style="color:white">CONTACT US</a></li>
+                        <li style="margin-top:10px"><a asp-action="" asp-controller="" style="color:white">GUARANTEE</a></li>
+                    </ul>
+                </div>                
+            </div>
+        </footer>
+
+
+
+        <script>
+            $(document).ready(function () {
+                $("#search").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="~/js/move-top.js"></script>
+        <script type="text/javascript" src="~/js/easing.js"></script>
+        <script type="text/javascript" src="~/js/startstop-slider.js"></script>
+        @RenderSection("Scripts", required: false)
+    </body>
+</html>

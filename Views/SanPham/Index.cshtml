@@ -1,0 +1,109 @@
+﻿@model IEnumerable<HomeShopping.Models.ProductModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*@model IEnumerable<HomeShopping.Models.Product>*@
+
+
+<p>
+    <a asp-action="Add" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManHinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeDieuHanh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CPU)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RAM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DungLuongPin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BoNhoTrong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductCategoryID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductQuantity)
+                </td>
+                <td>
+                    <img src="~/images/@item.ProductImage" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descriptions)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ManHinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeDieuHanh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CPU)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RAM)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DungLuongPin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BoNhoTrong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductCategoryID)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProductID" class="btn btn-danger">Edit</a>
+
+                    <a style="margin-top:10px" asp-action="Delete" asp-route-id="@item.ProductID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

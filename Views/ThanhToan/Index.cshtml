@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    input[type=submit] {
+        border-radius: 1.875rem;
+        padding-top: 10px;
+        background-color: darkred;
+        color: white;
+        height: 50px;
+        width: 100px;
+    }
+
+        input[type=submit]:hover {
+            background-color: dodgerblue;
+        }
+</style>
+<h1>Thanh toán</h1>
+@*<table class="table-bordered table">
+    <tr>
+        <th>Option</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Photo</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Sub Total</th>
+    </tr>
+     @foreach (var item in ViewBag.cart)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="cart" asp-action="remove"
+                           asp-route-id="@item.ProductModel.ProductID">Remove</a>
+                    </td>
+                    <td>@item.ProductModel.ProductID</td>
+                    <td>@item.ProductModel.ProductName</td>
+                    <td>
+                        <img src="~/images/@item.ProductModel.ProductImage" width="60"
+                             height="60" />
+                    </td>
+                    <td>@item.ProductModel.ProductPrice</td>
+                    <td>@item.Quantity</td>
+                    <td>
+                        @(item.ProductModel.ProductPrice *
+                item.Quantity)
+                    </td>
+                </tr>
+
+            }
+            <tr>
+                <td align="right" colspan="6">Sum</td>
+                <td>
+                    @ViewBag.total
+                </td>
+            </tr>
+
+        </table>
+        <br>*@
+<form action="/Cart/ThanhToan" method="post">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input type="text" id="fname" name="fname" class="form-control" placeholder="Name" />
+    </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+        <input type="text" id="email" name="email" class="form-control" placeholder="Email" />
+    </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+        <input type="text" id="address" name="address" class="form-control" placeholder="Địa chỉ" />
+    </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+        <input type="text" id="phone" name="phone" class="form-control" placeholder="Số điện thoại" />
+    </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+        <textarea id="message" name="message" class="form-control" rows="10"></textarea>
+    </div>
+    <div class="input-group">
+        <input type="submit" id="ok" name="ok" style="float:right" value="Đặt hàng" />
+    </div>
+</form>
+<br />
+
+
+

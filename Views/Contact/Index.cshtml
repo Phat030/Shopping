@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+
+    {
+        box-sizing: border-box;
+    }
+
+    input[type=text], select, textarea {
+        width: 80%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
+
+    label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+    }
+
+    input[type=submit] {
+        background-color: darkred;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 450px;
+    }
+
+        input[type=submit]:hover {
+            background-color: dodgerblue;
+        }
+
+
+    .dangnhap {
+        border-radius: 5px;
+        font-family: Courier New, Courier, monospace;
+        padding: 20px;
+    }
+
+    .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
+    }
+
+    .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    td h1 {
+        color: chocolate;
+        font-family: Courier New, Courier, monospace;
+        font-weight: bolder;
+    }
+
+    td h3 {
+        font-family: Courier New, Courier, monospace;
+        padding-top: 10px;
+        font-weight: bold;
+    }
+
+    label {
+        font-size: 16px;
+    }
+</style>
+
+    <form method="post" action="/Contact/Send">
+        <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center" style="background-color: cornflowerblue">
+                        <h4 class="modal-title w-100 font-weight-bold">Write to us</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mx-3">
+                        <div class="md-form mb-5">
+                            <i class="fas fa-user prefix grey-text"></i>
+                            <label data-error="wrong" data-success="right" for="hoten">Họ tên</label>
+                            <input type="text" id="hoten" name="hoten" class="form-control validate">
+
+                        </div>
+
+                        <div class="md-form mb-5">
+                            <i class="fas fa-envelope prefix grey-text"></i>
+                            <label data-error="wrong" data-success="right" for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control validate">
+
+                        </div>
+
+                        <div class="md-form mb-5">
+                            <i class="fas fa-tag prefix grey-text"></i>
+                            <label data-error="wrong" data-success="right" for="phone">Phone</label>
+                            <input type="text" id="phone" name="phone" class="form-control validate">
+
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fas fa-pencil prefix grey-text"></i>
+                            <label data-error="wrong" data-success="right" for="message">Message</label>
+                            <textarea type="text" id="message" name="message" class="md-textarea form-control" rows="4"></textarea>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center" style="background-color:cornflowerblue">
+                        <input type="submit" value="Send" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="text-center">
+        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">
+            Launch
+            Modal Contact Form
+        </a>
+    </div>

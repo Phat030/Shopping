@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewData["Title"] = "Pay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    input[type=submit] {
+        border-radius: 1.875rem;
+        padding-top: 10px;
+        background-color: darkred;
+        color: white;
+        height: 50px;
+        width: 100px;
+    }
+
+        input[type=submit]:hover {
+            background-color: dodgerblue;
+        }
+</style>
+<h2>ORDER</h2>
+<form>
+    <table class="table-bordered table">
+        <tr>
+
+            <th>Id</th>
+            <th>Tên sản phẩm</th>
+            <th>Hình ảnh</th>
+            <th>Giá </th>
+            <th>Số lượng</th>
+            <th>Tổng cộng</th>
+
+        </tr>
+        @foreach (var item in ViewBag.cart)
+        {
+            <tr>
+
+                <td>@item.Product.ProductId</td>
+                <td>@item.Product.ProductName</td>
+                <td>
+                    <img src="~/images/@item.Product.ProductImage" width="60" height="60" />
+                </td>
+                <td>@item.Product.ProductPrice</td>
+
+                <td>
+                    @item.Quantity
+                </td>
+                <td>
+                    @(item.Product.ProductPrice * item.Quantity)
+                </td>
+
+            </tr>
+        }
+        <tr>
+            <td align="right" colspan="5">Tổng cộng</td>
+            <td>
+                @ViewBag.total
+            </td>
+        </tr>
+    </table>
+</form>
+<br>
+
+<form action="/Cart/XacNhan" method="post">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input type="text" id="fname" name="fname" class="form-control" placeholder="Name" />
+    </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+        <input type="text" id="email" name="email" class="form-control" placeholder="Email" />
+    </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+        <input type="text" id="address" name="address" class="form-control" placeholder="address" />
+    </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+        <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone" />
+    </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+        <textarea id="message" name="message" class="form-control" rows="10"></textarea>
+    </div>
+    <div class="input-group">
+        <input type="submit" id="ok" name="ok" style="float:right" class="btn btn-primary" value="ORDER" />
+    </div>
+</form>
+<br />
